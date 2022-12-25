@@ -1,0 +1,64 @@
+
+//CAR FACTORY
+
+package car;
+
+public class CarFactory {
+    public static Car buildCar(CarType model) {
+        Car car = null;
+        switch (model) {
+        case SMALL:
+            car = new SmallCar();
+            break;
+ 
+        case SEDAN:
+            car = new SedanCar();
+            break;
+ 
+        case LUXURY:
+            car = new LuxuryCar();
+            break;
+ 
+        default:
+            // throw some exception
+            break;
+        }
+        return car;
+    }
+}
+
+
+
+
+
+
+
+
+//CAR.JAVA
+
+package car;
+
+public abstract class Car {
+	 
+    public Car(CarType model) {
+        this.model = model;
+        arrangeParts();
+    }
+ 
+    private void arrangeParts() {
+        // Do one time processing here
+    }
+ 
+    // Do subclass level processing in this method
+    protected abstract void construct();
+ 
+    private CarType model = null;
+ 
+    public CarType getModel() {
+        return model;
+    }
+ 
+    public void setModel(CarType model) {
+        this.model = model;
+    }
+}
